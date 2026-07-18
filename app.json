@@ -44,6 +44,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "92501fb8-6e6a-4227-a11e-856bcd3508c9"
+      }
+    },
+    "owner": "molhamab12"
   }
 }
