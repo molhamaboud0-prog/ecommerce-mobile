@@ -47,7 +47,10 @@ jobs:
       - name: Verify Expo auth and projectId
         run: |
           set -euo pipefail
-          eas whoami
+          if ! eas whoami; then
+            echo "::error::EAS authentication failed. Update the EXPO_TOKEN repository secret with a valid Expo access token (expo.dev → Access tokens), then re-run the workflow."
+            exit 1
+          fi
           if ! node -e '
             const app = require("./app.json");
             const id = app?.expo?.extra?.eas?.projectId;
