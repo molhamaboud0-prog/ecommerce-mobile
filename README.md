@@ -43,14 +43,22 @@ Android builds run **only from GitHub Actions**. The default profile is **produc
 2. In the GitHub repo → **Settings → Secrets and variables → Actions** → add secret:
    - Name: `EXPO_TOKEN`
    - Value: the token from step 1
-3. Link the app to an EAS project once:
+3. Link the app to an EAS project once (required — builds fail without `projectId`):
 
 ```bash
 npx eas-cli login
 npx eas-cli init
 ```
 
-Commit the `extra.eas.projectId` that `eas init` writes into `app.json`, then push to `main`.
+Commit the updated `app.json` (it will contain `extra.eas.projectId`), then push to `main`.
+
+4. Generate Android credentials once (required for `--non-interactive` CI builds):
+
+```bash
+npx eas-cli credentials -p android
+```
+
+Choose to let Expo generate a new keystore and store it on your Expo account.
 
 ### Trigger a build
 

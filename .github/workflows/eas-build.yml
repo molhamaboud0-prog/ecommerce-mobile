@@ -44,6 +44,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify Expo auth and projectId
+        run: |
+          set -euo pipefail
+          eas whoami
+          if ! node -e '
+            const app = require("./app.json");
+            const id = app?.expo?.extra?.eas?.projectId;
+            if (!id) {
+              console.error("Missing expo.extra.eas.projectId in app.json.");
+              console.error("Run locally: npx eas-cli login && npx eas-cli init");
+              console.error("Then commit app.json and push again.");
+              process.exit(1);
+            }
+            console.log("EAS projectId:", id);
+          '; then
+            exit 1
+          fi
+
       - name: Build Android APK with EAS
         run: |
           eas build \
