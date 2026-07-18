@@ -35,7 +35,7 @@ Scan the QR code with **Expo Go** app on your phone (same WiFi network).
 
 ## Build APK (EAS via GitHub only)
 
-Android builds run **only from GitHub Actions** (not from your laptop).
+Android builds run **only from GitHub Actions**. The default profile is **production** and outputs an **APK**.
 
 ### One-time setup
 
@@ -43,7 +43,7 @@ Android builds run **only from GitHub Actions** (not from your laptop).
 2. In the GitHub repo → **Settings → Secrets and variables → Actions** → add secret:
    - Name: `EXPO_TOKEN`
    - Value: the token from step 1
-3. Link the app to an EAS project once (from any machine, logged into Expo):
+3. Link the app to an EAS project once:
 
 ```bash
 npx eas-cli login
@@ -54,8 +54,8 @@ Commit the `extra.eas.projectId` that `eas init` writes into `app.json`, then pu
 
 ### Trigger a build
 
-- Push to `main`, or
-- GitHub → **Actions → EAS Build → Run workflow** (choose `preview` for APK)
+- Push to `main` (runs **production** APK), or
+- GitHub → **Actions → EAS Build → Run workflow**
 
 Build status and APK download: [expo.dev](https://expo.dev) → your project → Builds.
 

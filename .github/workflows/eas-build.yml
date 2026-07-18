@@ -10,11 +10,11 @@ on:
       profile:
         description: EAS build profile
         required: true
-        default: preview
+        default: production
         type: choice
         options:
-          - preview
           - production
+          - preview
           - development
 
 concurrency:
@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   android:
-    name: Android (${{ github.event.inputs.profile || 'preview' }})
+    name: Android (${{ github.event.inputs.profile || 'production' }})
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,10 +44,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Android with EAS
+      - name: Build Android APK with EAS
         run: |
           eas build \
             --platform android \
-            --profile "${{ github.event.inputs.profile || 'preview' }}" \
+            --profile "${{ github.event.inputs.profile || 'production' }}" \
             --non-interactive \
             --no-wait
