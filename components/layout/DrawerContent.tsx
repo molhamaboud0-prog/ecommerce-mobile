@@ -12,17 +12,18 @@ import {
   LogOut,
   Mail,
   Package,
+  ShoppingBasket,
 } from 'lucide-react-native';
 import type { LucideIcon } from 'lucide-react-native';
 import { Alert, I18nManager, Pressable, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Text } from '@/components/ui/AppText';
+import { AppImage } from '@/components/ui/AppImage';
 import { Avatar } from '@/components/ui';
 import { goToDrawerHome } from '@/components/layout/DrawerBackToHomeButton';
 import { useAppTranslation } from '@/hooks/useLocalized';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { brandGradient } from '@/lib/theme';
 import { useAuthStore } from '@/store/authStore';
 
 type DrawerNavItem = {
@@ -36,7 +37,7 @@ type DrawerNavItem = {
 
 function DrawerSectionLabel({ label }: { label: string }) {
   return (
-    <Text className="mb-2 mt-4 px-5 text-xs font-semibold uppercase tracking-wide text-muted">
+    <Text className="mb-2 mt-5 px-5 text-xs font-semibold uppercase tracking-wide text-muted">
       {label}
     </Text>
   );
@@ -97,7 +98,8 @@ function DrawerNavRow({ item, isRTL }: { item: DrawerNavItem; isRTL: boolean }) 
   );
 }
 
-function DrawerProfileHeader({
+/** Full-bleed brand banner — app icon spans entire drawer width */
+function DrawerBrandHeader({
   onPress,
   isRTL,
 }: {
@@ -106,6 +108,7 @@ function DrawerProfileHeader({
 }) {
   const user = useAuthStore((s) => s.user);
   const { t } = useAppTranslation();
+  const insets = useSafeAreaInsets();
   const Chevron = isRTL ? ChevronLeft : ChevronRight;
 
   return (
@@ -114,38 +117,78 @@ function DrawerProfileHeader({
         void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         onPress();
       }}
-      className={`active:opacity-90 ${isRTL ? 'flex-row-reverse' : ''}`}
+      className="w-full overflow-hidden active:opacity-95"
       accessibilityRole="button"
       accessibilityLabel={t('common.viewProfile')}
     >
-      <LinearGradient
-        colors={[...brandGradient]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ paddingHorizontal: 20, paddingBottom: 24, paddingTop: 8 }}
-      >
-        <View className={`flex-row items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <View className="rounded-full border-2 border-white/25 p-0.5">
-            <Avatar name={user?.name} size={56} className="bg-white/20" />
+      {/* Icon takes full drawer width */}
+      <View className="relative w-full" style={{ height: 168 + Math.max(insets.top, 8) }}>
+        <AppImage
+          source={require('../../assets/icon.png')}
+          style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, width: '100%' }}
+          contentFit="cover"
+        />
+        <LinearGradient
+          colors={[
+            'rgba(11,31,58,0.25)',
+            'rgba(11,31,58,0.55)',
+            'rgba(11,31,58,0.92)',
+          ]}
+          locations={[0, 0.45, 1]}
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: '100%',
+          }}
+        />
+
+        <View
+          className="absolute bottom-0 left-0 right-0 w-full"
+          style={{ paddingTop: Math.max(insets.top, 8) }}
+        >
+          <View className="mb-3 w-full items-center px-4">
+            <View className="mb-2 h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/20">
+              <ShoppingBasket size={22} color="#FFFFFF" strokeWidth={1.8} />
+            </View>
+            <Text className="text-center text-base font-bold text-white">
+              {t('common.drawerFooter')}
+            </Text>
           </View>
-          <View className={`flex-1 ${isRTL ? 'mr-3 items-end' : 'ml-3'}`}>
-            <Text className="text-lg font-bold text-white" numberOfLines={1}>
-              {user?.name ?? t('common.profile')}
-            </Text>
-            <Text className="mt-0.5 text-sm text-white/75" numberOfLines={1}>
-              {user?.email}
-            </Text>
+
+          <View className="h-px w-full bg-white/20" />
+
+          <View
+            className={`w-full flex-row items-center px-4 py-3.5 ${
+              isRTL ? 'flex-row-reverse' : ''
+            }`}
+          >
+            <View className="rounded-full border-2 border-white/35 p-0.5">
+              <Avatar name={user?.name} size={44} className="bg-white/20" />
+            </View>
+            <View className={`flex-1 ${isRTL ? 'mr-3 items-end' : 'ml-3'}`}>
+              <Text className="text-base font-bold text-white" numberOfLines={1}>
+                {user?.name ?? t('common.profile')}
+              </Text>
+              <Text className="mt-0.5 text-xs text-white/75" numberOfLines={1}>
+                {user?.email}
+              </Text>
+            </View>
             <View
-              className={`mt-2 flex-row items-center ${isRTL ? 'flex-row-reverse' : ''}`}
+              className={`flex-row items-center rounded-full border border-white/25 bg-white/15 px-2.5 py-1 ${
+                isRTL ? 'flex-row-reverse' : ''
+              }`}
             >
-              <Text className="text-xs font-medium text-white/90">
+              <Text className="text-[11px] font-medium text-white">
                 {t('common.viewProfile')}
               </Text>
-              <Chevron size={14} color="rgba(255,255,255,0.9)" />
+              <Chevron size={12} color="#FFFFFF" />
             </View>
           </View>
         </View>
-      </LinearGradient>
+      </View>
     </Pressable>
   );
 }
@@ -160,6 +203,7 @@ function getActiveTabName(props: DrawerContentComponentProps): string | undefine
 
 export function DrawerContent(props: DrawerContentComponentProps) {
   const { t, isRTL } = useAppTranslation();
+  const insets = useSafeAreaInsets();
   const logout = useAuthStore((s) => s.logout);
 
   const activeDrawerRoute = props.state.routes[props.state.index]?.name;
@@ -235,19 +279,17 @@ export function DrawerContent(props: DrawerContentComponentProps) {
     : { borderTopRightRadius: 24, borderBottomRightRadius: 24 };
 
   return (
-    <SafeAreaView
-      edges={['top', 'bottom']}
-      className="flex-1 bg-surface"
-      style={drawerRadiusStyle}
-    >
-      <DrawerProfileHeader
+    <View className="flex-1 overflow-hidden bg-surface" style={drawerRadiusStyle}>
+      {/* Edge-to-edge brand header — full drawer width */}
+      <DrawerBrandHeader
         isRTL={isRTL}
         onPress={() => closeAnd(() => router.replace('/(drawer)/(tabs)/profile'))}
       />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 16 }}
+        contentContainerStyle={{ paddingBottom: 12 }}
+        className="flex-1"
       >
         <DrawerSectionLabel label={t('common.drawerShopSection')} />
         {shopItems.map((item) => (
@@ -260,7 +302,10 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         ))}
       </ScrollView>
 
-      <View className="border-t border-border px-3 pb-2 pt-2">
+      <View
+        className="border-t border-border px-3 pt-2"
+        style={{ paddingBottom: Math.max(insets.bottom, 10) }}
+      >
         <DrawerNavRow
           isRTL={isRTL}
           item={{
@@ -275,6 +320,6 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           {t('common.drawerFooter')}
         </Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

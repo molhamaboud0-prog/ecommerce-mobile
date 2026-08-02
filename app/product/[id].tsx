@@ -90,8 +90,16 @@ export default function ProductDetailScreen() {
 
   const handleToggleWishlist = () => {
     void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    const willAdd = !isWishlisted;
     toggleWishlist(product.id);
+    showToast(
+      willAdd ? t('common.addedToFavoritesToast') : t('common.removedFromFavoritesToast'),
+    );
   };
+
+  const favoriteButtonTitle = isWishlisted
+    ? t('common.removeFromFavorites')
+    : t('common.addToFavorites');
 
   const cartButtonTitle = inCart
     ? cartQuantity > 1
@@ -126,7 +134,7 @@ export default function ProductDetailScreen() {
       <View className="flex-1 bg-background">
         <RefreshableScrollView
           className="flex-1"
-          contentContainerStyle={{ paddingBottom: 120 }}
+          contentContainerStyle={{ paddingBottom: 150 }}
         >
           <View className="relative bg-surface-alt">
             <AppImage
@@ -255,21 +263,33 @@ export default function ProductDetailScreen() {
           className="border-t border-border bg-surface px-4 pt-3"
           style={shadowElevated}
         >
-          <View className="flex-row items-center gap-4 pb-1">
-            <View className="flex-1">
-              <Text className="text-xs text-muted">{t('common.total')}</Text>
-              <Text className="text-xl font-bold text-ink">
-                ${product.price.toFixed(2)}
-              </Text>
+          <View className="pb-1">
+            <View className="mb-3 flex-row items-end justify-between">
+              <View>
+                <Text className="text-xs text-muted">{t('common.total')}</Text>
+                <Text className="text-xl font-bold text-ink">
+                  ${product.price.toFixed(2)}
+                </Text>
+              </View>
             </View>
-            <View className="min-w-[200px] flex-[1.4]">
-              <Button
-                title={cartButtonTitle}
-                variant={inCart ? 'success' : 'primary'}
-                onPress={handleAddToCart}
-                disabled={!product.inStock}
-                className="py-3.5"
-              />
+            <View className="flex-row items-center gap-2.5">
+              <View className="flex-1">
+                <Button
+                  title={favoriteButtonTitle}
+                  variant={isWishlisted ? 'secondary' : 'ghost'}
+                  onPress={handleToggleWishlist}
+                  className="py-3.5"
+                />
+              </View>
+              <View className="flex-[1.2]">
+                <Button
+                  title={cartButtonTitle}
+                  variant={inCart ? 'success' : 'primary'}
+                  onPress={handleAddToCart}
+                  disabled={!product.inStock}
+                  className="py-3.5"
+                />
+              </View>
             </View>
           </View>
         </SafeAreaView>

@@ -15,7 +15,7 @@ import { useThemeColors } from '@/hooks/useThemeColors';
 import { shadowCard } from '@/lib/theme';
 
 const HERO_IMAGE =
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&h=700&q=80';
+  'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&h=700&q=80';
 
 function SearchBar() {
   const { t } = useAppTranslation();
