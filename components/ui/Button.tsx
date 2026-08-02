@@ -69,7 +69,7 @@ export function Button({
         {loading ? (
           <ActivityIndicator
             size="small"
-            color={variant === 'light' ? '#E94560' : '#FFFFFF'}
+            color={variant === 'light' ? '#1B4F8A' : '#FFFFFF'}
             style={{ marginRight: 8 }}
           />
         ) : null}

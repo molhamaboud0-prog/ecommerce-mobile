@@ -22,6 +22,7 @@ import { Avatar } from '@/components/ui';
 import { goToDrawerHome } from '@/components/layout/DrawerBackToHomeButton';
 import { useAppTranslation } from '@/hooks/useLocalized';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { brandGradient } from '@/lib/theme';
 import { useAuthStore } from '@/store/authStore';
 
 type DrawerNavItem = {
@@ -118,7 +119,7 @@ function DrawerProfileHeader({
       accessibilityLabel={t('common.viewProfile')}
     >
       <LinearGradient
-        colors={['#1A1A2E', '#3D2C5A', '#E94560']}
+        colors={[...brandGradient]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ paddingHorizontal: 20, paddingBottom: 24, paddingTop: 8 }}

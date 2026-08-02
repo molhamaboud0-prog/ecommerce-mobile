@@ -2,22 +2,18 @@ import '../global.css';
 import '@/lib/i18n';
 import '@/components/ui/AppImage';
 
-import {
-  Cairo_400Regular,
-  Cairo_500Medium,
-  Cairo_600SemiBold,
-  Cairo_700Bold,
-  useFonts,
-} from '@expo-google-fonts/cairo';
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { colorScheme } from 'nativewind';
 import { useEffect } from 'react';
+import { Appearance } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ToastHost } from '@/components/ui/Toast';
+import { applyGlobalDubaiFont } from '@/lib/fonts';
 import { useNavigationOptions } from '@/lib/navigation';
 import { useSettingsStore } from '@/store/settingsStore';
 
@@ -30,10 +26,10 @@ export default function RootLayout() {
   const { stackScreenOptions } = useNavigationOptions();
 
   const [fontsLoaded] = useFonts({
-    Cairo_400Regular,
-    Cairo_500Medium,
-    Cairo_600SemiBold,
-    Cairo_700Bold,
+    'Dubai-Light': require('../assets/fonts/Dubai-Light.ttf'),
+    'Dubai-Regular': require('../assets/fonts/Dubai-Regular.ttf'),
+    'Dubai-Medium': require('../assets/fonts/Dubai-Medium.ttf'),
+    'Dubai-Bold': require('../assets/fonts/Dubai-Bold.ttf'),
   });
 
   useEffect(() => {
@@ -41,11 +37,13 @@ export default function RootLayout() {
   }, [language, setLanguage]);
 
   useEffect(() => {
+    Appearance.setColorScheme(theme);
     colorScheme.set(theme);
   }, [theme]);
 
   useEffect(() => {
     if (fontsLoaded) {
+      applyGlobalDubaiFont();
       void SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);

@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react-native';
+import { Appearance } from 'react-native';
 
 import { useSettingsStore } from '@/store/settingsStore';
 
@@ -10,6 +11,11 @@ jest.mock('nativewind', () => ({
 describe('useSettingsStore theme', () => {
   beforeEach(() => {
     useSettingsStore.setState({ theme: 'light' });
+    jest.spyOn(Appearance, 'setColorScheme').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it('defaults to light theme', () => {
@@ -25,6 +31,7 @@ describe('useSettingsStore theme', () => {
     });
 
     expect(result.current.theme).toBe('dark');
+    expect(Appearance.setColorScheme).toHaveBeenCalledWith('dark');
   });
 
   it('toggles between light and dark', () => {
@@ -39,5 +46,6 @@ describe('useSettingsStore theme', () => {
       result.current.toggleTheme();
     });
     expect(result.current.theme).toBe('light');
+    expect(Appearance.setColorScheme).toHaveBeenCalledWith('light');
   });
 });

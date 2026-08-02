@@ -16,7 +16,7 @@ import { aboutContent } from '@/data/about';
 import type { AboutValueIcon } from '@/data/types';
 import { useAppTranslation } from '@/hooks/useLocalized';
 import { useThemeColors } from '@/hooks/useThemeColors';
-import { shadowCard } from '@/lib/theme';
+import { brandGradient, shadowCard } from '@/lib/theme';
 
 const VALUE_ICONS: Record<AboutValueIcon, LucideIcon> = {
   award: Award,
@@ -33,7 +33,7 @@ function AboutHero({ isRTL }: { isRTL: boolean }) {
   return (
     <View className="mb-5 overflow-hidden rounded-3xl" style={shadowCard}>
       <LinearGradient
-        colors={['#1A1A2E', '#3D2C5A', '#E94560']}
+        colors={[...brandGradient]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1.1, y: 1.1 }}
         style={{ padding: 28 }}

@@ -12,29 +12,33 @@ export type ThemePalette = {
   border: string;
 };
 
+/** Dark blue + cool gray brand system */
 export const lightColors: ThemePalette = {
-  primary: '#1A1A2E',
-  ink: '#1A1A2E',
-  accent: '#E94560',
+  primary: '#0B1F3A',
+  ink: '#0B1726',
+  accent: '#1B4F8A',
   surface: '#FFFFFF',
-  surfaceAlt: '#F1F3F5',
-  background: '#F8F9FA',
-  muted: '#6B7280',
-  success: '#10B981',
-  border: '#E5E7EB',
+  surfaceAlt: '#E9EFF6',
+  background: '#F5F7FA',
+  muted: '#5B6B7C',
+  success: '#0D9488',
+  border: '#D5DEE9',
 };
 
 export const darkColors: ThemePalette = {
-  primary: '#1A1A2E',
-  ink: '#F3F4F6',
-  accent: '#F25C76',
-  surface: '#1A1D26',
-  surfaceAlt: '#232733',
-  background: '#0F1117',
-  muted: '#9CA3AF',
-  success: '#34D399',
-  border: '#2A2F3A',
+  primary: '#0B1F3A',
+  ink: '#E8EEF6',
+  accent: '#5B9BD5',
+  surface: '#121C2E',
+  surfaceAlt: '#1A2740',
+  background: '#0A1220',
+  muted: '#94A3B8',
+  success: '#2DD4BF',
+  border: '#243247',
 };
+
+/** Hero / drawer brand gradient (deep navy → steel blue) */
+export const brandGradient = ['#0B1F3A', '#163A5F', '#2B6CB0'] as const;
 
 export function getColors(theme: 'light' | 'dark'): ThemePalette {
   return theme === 'dark' ? darkColors : lightColors;
@@ -43,12 +47,22 @@ export function getColors(theme: 'light' | 'dark'): ThemePalette {
 /** Static palette for non-theme-aware contexts (splash, defaults). Prefer useThemeColors(). */
 export const colors = lightColors;
 
+/** Soft card elevation — prefer with a light border */
 export const shadowCard: ViewStyle = {
-  shadowColor: '#1A1A2E',
+  shadowColor: '#0B1F3A',
   shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 0.07,
-  shadowRadius: 12,
-  elevation: 3,
+  shadowOpacity: 0.06,
+  shadowRadius: 10,
+  elevation: 2,
+};
+
+/** Sticky bars / elevated chrome */
+export const shadowElevated: ViewStyle = {
+  shadowColor: '#0B1F3A',
+  shadowOffset: { width: 0, height: -4 },
+  shadowOpacity: 0.12,
+  shadowRadius: 16,
+  elevation: 12,
 };
 
 export const spacing = {
@@ -67,10 +81,10 @@ export const typography = {
 } as const;
 
 export const fontFamilies = {
-  regular: 'Cairo_400Regular',
-  medium: 'Cairo_500Medium',
-  semibold: 'Cairo_600SemiBold',
-  bold: 'Cairo_700Bold',
+  regular: 'Dubai-Regular',
+  medium: 'Dubai-Medium',
+  semibold: 'Dubai-Bold',
+  bold: 'Dubai-Bold',
 } as const;
 
 export const listConfig = {

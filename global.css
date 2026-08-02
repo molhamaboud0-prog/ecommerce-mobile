@@ -3,29 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light mode — default brand tokens */
   :root {
-    --color-ink: #1a1a2e;
+    --color-ink: #0b1726;
     --color-surface: #ffffff;
-    --color-surface-alt: #f1f3f5;
-    --color-background: #f8f9fa;
-    --color-muted: #6b7280;
-    --color-border: #e5e7eb;
-    --color-accent: #e94560;
-    --color-accent-soft: #fdecef;
-    --color-success: #10b981;
-    --color-success-soft: #e7f8f1;
+    --color-surface-alt: #e9eff6;
+    --color-background: #f5f7fa;
+    --color-muted: #5b6b7c;
+    --color-border: #d5dee9;
+    --color-accent: #1b4f8a;
+    --color-accent-soft: #eaf1f8;
+    --color-success: #0d9488;
+    --color-success-soft: #e6f7f5;
+    --color-primary: #0b1f3a;
   }
 
-  .dark:root {
-    --color-ink: #f3f4f6;
-    --color-surface: #1a1d26;
-    --color-surface-alt: #232733;
-    --color-background: #0f1117;
-    --color-muted: #9ca3af;
-    --color-border: #2a2f3a;
-    --color-accent: #f25c76;
-    --color-accent-soft: #33202a;
-    --color-success: #34d399;
-    --color-success-soft: #17302c;
+  /* Dark mode — follows NativeWind colorScheme / Appearance */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-ink: #e8eef6;
+      --color-surface: #121c2e;
+      --color-surface-alt: #1a2740;
+      --color-background: #0a1220;
+      --color-muted: #94a3b8;
+      --color-border: #243247;
+      --color-accent: #5b9bd5;
+      --color-accent-soft: #152a45;
+      --color-success: #2dd4bf;
+      --color-success-soft: #12352f;
+      --color-primary: #0b1f3a;
+    }
   }
 }

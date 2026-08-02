@@ -2,13 +2,18 @@
 module.exports = {
   content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
-  darkMode: 'class',
+  darkMode: 'media',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Dubai-Regular'],
+        light: ['Dubai-Light'],
+        medium: ['Dubai-Medium'],
+        semibold: ['Dubai-Bold'],
+        bold: ['Dubai-Bold'],
+      },
       colors: {
-        // Static brand navy — safe as a background in both modes
-        primary: '#1A1A2E',
-        // Adaptive semantic tokens (see global.css)
+        primary: 'var(--color-primary)',
         ink: 'var(--color-ink)',
         accent: 'var(--color-accent)',
         'accent-soft': 'var(--color-accent-soft)',

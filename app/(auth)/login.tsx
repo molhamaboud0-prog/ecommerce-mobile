@@ -34,8 +34,12 @@ export default function LoginScreen() {
         <View className="h-20 w-20 items-center justify-center rounded-3xl bg-accent">
           <ShoppingBag size={38} color="#FFFFFF" />
         </View>
-        <Text className="mt-5 text-3xl font-bold text-ink">{t('common.login')}</Text>
-        <Text className="mt-1 text-muted">{t('common.loginSubtitle')}</Text>
+        <Text className="mt-5 text-center text-3xl font-bold leading-10 text-ink">
+          {t('common.login')}
+        </Text>
+        <Text className="mt-2 text-center text-base leading-6 text-muted">
+          {t('common.loginSubtitle')}
+        </Text>
       </View>
 
       <Input

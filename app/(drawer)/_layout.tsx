@@ -6,6 +6,7 @@ import { DrawerBackToHomeButton } from '@/components/layout/DrawerBackToHomeButt
 import { RequireAuth } from '@/components/auth/RouteGuards';
 import { useAppTranslation } from '@/hooks/useLocalized';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { fontFamilies } from '@/lib/theme';
 import { useNavigationOptions } from '@/lib/navigation';
 
 export default function DrawerLayout() {
@@ -26,6 +27,7 @@ export default function DrawerLayout() {
           drawerType: 'front',
           overlayColor: 'rgba(0,0,0,0.45)',
           swipeEdgeWidth: 48,
+          drawerLabelStyle: { fontFamily: fontFamilies.regular },
           drawerStyle: {
             width: 304,
             backgroundColor: c.surface,

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { I18nManager } from 'react-native';
+import { Appearance, I18nManager } from 'react-native';
 import { colorScheme } from 'nativewind';
 
 import { asyncStorage } from '@/lib/storage';
@@ -18,6 +18,11 @@ type SettingsState = {
   isRTL: () => boolean;
 };
 
+function applyColorScheme(theme: Theme) {
+  Appearance.setColorScheme(theme);
+  colorScheme.set(theme);
+}
+
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set, get) => ({
@@ -33,7 +38,7 @@ export const useSettingsStore = create<SettingsState>()(
         set({ language: lang });
       },
       setTheme: (theme) => {
-        colorScheme.set(theme);
+        applyColorScheme(theme);
         set({ theme });
       },
       toggleTheme: () => {
@@ -44,6 +49,11 @@ export const useSettingsStore = create<SettingsState>()(
     {
       name: 'settings-storage',
       storage: createJSONStorage(() => asyncStorage),
+      onRehydrateStorage: () => (state) => {
+        if (state?.theme) {
+          applyColorScheme(state.theme);
+        }
+      },
     },
   ),
 );

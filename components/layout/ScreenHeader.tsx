@@ -17,19 +17,12 @@ export function ScreenHeader({ title, showMenu = true }: ScreenHeaderProps) {
   const c = useThemeColors();
 
   return (
-    <SafeAreaView edges={['top']} className="bg-background">
+    <SafeAreaView edges={['top']} className="border-b border-border bg-surface">
       <View className="flex-row items-center px-4 py-3">
         {showMenu ? (
           <Pressable
             onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            className="mr-3 h-10 w-10 items-center justify-center rounded-full bg-surface active:opacity-70"
-            style={{
-              shadowColor: c.ink,
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.06,
-              shadowRadius: 6,
-              elevation: 2,
-            }}
+            className="mr-3 h-10 w-10 items-center justify-center rounded-full bg-surface-alt active:opacity-70"
             accessibilityRole="button"
             accessibilityLabel="Menu"
           >

@@ -1,11 +1,9 @@
 import type { ReactNode } from 'react';
 import {
-  Keyboard,
   KeyboardAvoidingView,
   Platform,
   RefreshControl,
   ScrollView,
-  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -22,36 +20,35 @@ export function AuthFormLayout({ children }: AuthFormLayoutProps) {
   const c = useThemeColors();
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <SafeAreaView className="flex-1 bg-background" edges={['top', 'bottom', 'left', 'right']}>
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 24}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 8 : 0}
       >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <ScrollView
-            className="flex-1"
-            contentContainerStyle={{
-              flexGrow: 1,
-              justifyContent: 'center',
-              paddingHorizontal: 24,
-              paddingVertical: 32,
-            }}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag"
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={onRefresh}
-                tintColor={c.accent}
-                colors={[c.accent]}
-              />
-            }
-          >
-            <View>{children}</View>
-          </ScrollView>
-        </TouchableWithoutFeedback>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'center',
+            paddingHorizontal: 24,
+            paddingVertical: 32,
+          }}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+          showsVerticalScrollIndicator={false}
+          bounces
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={c.accent}
+              colors={[c.accent]}
+            />
+          }
+        >
+          <View className="w-full">{children}</View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

@@ -2,8 +2,8 @@ import { colors, listConfig, spacing } from '@/lib/theme';
 
 describe('theme', () => {
   it('exports brand colors', () => {
-    expect(colors.primary).toBe('#1A1A2E');
-    expect(colors.accent).toBe('#E94560');
+    expect(colors.primary).toBe('#0B1F3A');
+    expect(colors.accent).toBe('#1B4F8A');
   });
 
   it('exports list pagination config', () => {

@@ -14,13 +14,14 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#1A1A2E"
+        "backgroundColor": "#0B1F3A"
       },
       "package": "com.ecommerce.mobile",
       "statusBar": {
         "barStyle": "dark-content",
-        "backgroundColor": "#F8F9FA"
-      }
+        "backgroundColor": "#F5F7FA"
+      },
+      "versionCode": 2
     },
     "web": {
       "bundler": "metro",
@@ -38,7 +39,7 @@
         {
           "image": "./assets/splash-icon.png",
           "resizeMode": "contain",
-          "backgroundColor": "#1A1A2E"
+          "backgroundColor": "#0B1F3A"
         }
       ]
     ],
