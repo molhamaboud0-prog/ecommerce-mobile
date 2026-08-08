@@ -23,7 +23,7 @@ export function DrawerBackToHomeButton() {
         color={c.ink}
         style={isRTL ? { transform: [{ scaleX: -1 }] } : undefined}
       />
-      <Text className="ml-1 text-base font-medium text-ink">{t('common.home')}</Text>
+      <Text className="ml-1 font-medium text-base text-ink">{t('common.home')}</Text>
     </Pressable>
   );
 }

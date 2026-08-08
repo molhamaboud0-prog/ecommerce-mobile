@@ -41,7 +41,7 @@ function AboutHero({ isRTL }: { isRTL: boolean }) {
         <View
           className={`mb-4 self-start rounded-full bg-white/15 px-3 py-1 ${isRTL ? 'self-end' : ''}`}
         >
-          <Text className="text-xs font-semibold text-white/90">{since}</Text>
+          <Text className="font-semibold text-xs text-white/90">{since}</Text>
         </View>
         <View className={`flex-row items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
           <View className="mr-0 h-12 w-12 items-center justify-center rounded-2xl bg-white/15">
@@ -49,7 +49,7 @@ function AboutHero({ isRTL }: { isRTL: boolean }) {
           </View>
           <View className={`flex-1 ${isRTL ? 'mr-3 items-end' : 'ml-3'}`}>
             <Text
-              className={`text-2xl font-bold text-white ${isRTL ? 'text-right' : ''}`}
+              className={`font-bold text-2xl text-white ${isRTL ? 'text-right' : ''}`}
             >
               {title}
             </Text>
@@ -72,7 +72,7 @@ function AboutStats({ isRTL }: { isRTL: boolean }) {
           className="min-w-[46%] flex-1 items-center rounded-2xl bg-surface p-4"
           style={shadowCard}
         >
-          <Text className="text-2xl font-bold text-accent">{stat.value}</Text>
+          <Text className="font-bold text-2xl text-accent">{stat.value}</Text>
           <Text
             className={`mt-1 text-center text-xs text-muted ${isRTL ? 'text-right' : ''}`}
           >
@@ -90,7 +90,7 @@ function AboutMission({ isRTL }: { isRTL: boolean }) {
 
   return (
     <View className="border-accent/20 mb-5 rounded-3xl border bg-accent-soft p-5">
-      <Text className="text-xs font-semibold uppercase tracking-wide text-accent">
+      <Text className="font-semibold text-xs uppercase tracking-wide text-accent">
         {t('common.aboutOurMission')}
       </Text>
       <Text className={`mt-2 text-base leading-7 text-ink ${isRTL ? 'text-right' : ''}`}>
@@ -106,7 +106,7 @@ function AboutValues({ isRTL }: { isRTL: boolean }) {
 
   return (
     <View className="mb-5">
-      <Text className={`mb-3 text-lg font-bold text-ink ${isRTL ? 'text-right' : ''}`}>
+      <Text className={`mb-3 font-bold text-lg text-ink ${isRTL ? 'text-right' : ''}`}>
         {t('common.aboutWhyUs')}
       </Text>
       {aboutContent.values.map((value) => {
@@ -146,7 +146,7 @@ function AboutStory({ isRTL }: { isRTL: boolean }) {
 
   return (
     <View className="mb-6 rounded-3xl bg-surface p-5" style={shadowCard}>
-      <Text className={`mb-3 text-lg font-bold text-ink ${isRTL ? 'text-right' : ''}`}>
+      <Text className={`mb-3 font-bold text-lg text-ink ${isRTL ? 'text-right' : ''}`}>
         {t('common.aboutOurStory')}
       </Text>
       {paragraphs.map((p) => (

@@ -29,7 +29,7 @@ import { useWishlistStore } from '@/store/wishlistStore';
 function StatBox({ value, label }: { value: number; label: string }) {
   return (
     <View className="flex-1 items-center">
-      <Text className="text-xl font-bold text-ink">{value}</Text>
+      <Text className="font-bold text-xl text-ink">{value}</Text>
       <Text className="text-xs text-muted">{label}</Text>
     </View>
   );
@@ -121,7 +121,7 @@ export default function ProfileScreen() {
               <Pencil size={16} color="#FFFFFF" />
             </Pressable>
           </View>
-          <Text className="mt-3 text-xl font-bold text-ink">{user?.name}</Text>
+          <Text className="mt-3 font-bold text-xl text-ink">{user?.name}</Text>
           <Text className="mt-0.5 text-muted">{user?.email}</Text>
           {user?.phone ? (
             <View className="mt-2 flex-row items-center">

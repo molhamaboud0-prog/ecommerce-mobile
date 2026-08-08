@@ -1,4 +1,10 @@
-import { Platform, Text as RNText, StyleSheet, type TextProps, type TextStyle } from 'react-native';
+import {
+  Platform,
+  Text as RNText,
+  StyleSheet,
+  type TextProps,
+  type TextStyle,
+} from 'react-native';
 import { cssInterop } from 'nativewind';
 
 // Each Dubai weight is registered as its own font family, so we translate

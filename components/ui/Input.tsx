@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-  Platform,
-  Pressable,
-  TextInput,
-  type TextInputProps,
-  View,
-} from 'react-native';
+import { Platform, Pressable, TextInput, type TextInputProps, View } from 'react-native';
 import { Eye, EyeOff } from 'lucide-react-native';
 
 import { Text } from '@/components/ui/AppText';
@@ -40,7 +34,9 @@ export function Input({
 
   return (
     <View className="mb-4">
-      {label ? <Text className="mb-1.5 text-sm font-medium text-ink">{label}</Text> : null}
+      {label ? (
+        <Text className="mb-1.5 font-medium text-sm text-ink">{label}</Text>
+      ) : null}
       <View
         className={`min-h-[52px] flex-row items-center rounded-xl border bg-surface ${borderClass}`}
       >

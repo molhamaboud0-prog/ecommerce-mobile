@@ -24,7 +24,7 @@ const textStyles = {
 export function Badge({ label, variant = 'muted' }: BadgeProps) {
   return (
     <View className={`self-start rounded-full px-2.5 py-0.5 ${containerStyles[variant]}`}>
-      <Text className={`text-xs font-semibold ${textStyles[variant]}`}>{label}</Text>
+      <Text className={`font-semibold text-xs ${textStyles[variant]}`}>{label}</Text>
     </View>
   );
 }

@@ -36,7 +36,7 @@ export default function SignupScreen() {
         <View className="h-20 w-20 items-center justify-center rounded-3xl bg-accent">
           <UserPlus size={36} color="#FFFFFF" />
         </View>
-        <Text className="mt-5 text-center text-3xl font-bold leading-10 text-ink">
+        <Text className="mt-5 text-center font-bold text-3xl leading-10 text-ink">
           {t('common.signup')}
         </Text>
         <Text className="mt-2 text-center text-base leading-6 text-muted">

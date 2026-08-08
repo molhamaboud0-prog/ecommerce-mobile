@@ -58,7 +58,7 @@ export function ToastHost() {
         style={shadowCard}
       >
         <CheckCircle2 size={18} color={c.success} />
-        <Text className="ml-2 text-sm font-semibold text-white">{message}</Text>
+        <Text className="ml-2 font-semibold text-sm text-white">{message}</Text>
       </Animated.View>
     </View>
   );

@@ -29,7 +29,7 @@ export function ScreenHeader({ title, showMenu = true }: ScreenHeaderProps) {
             <Menu size={22} color={c.ink} />
           </Pressable>
         ) : null}
-        <Text className="text-xl font-bold text-ink">{title}</Text>
+        <Text className="font-bold text-xl text-ink">{title}</Text>
       </View>
     </SafeAreaView>
   );

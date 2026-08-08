@@ -49,7 +49,7 @@ export default function TabLayout() {
               <ShoppingCart color={color} size={size} />
               {itemCount > 0 ? (
                 <View className="absolute -right-2 -top-1 h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1">
-                  <Text className="text-[10px] font-bold text-white">{itemCount}</Text>
+                  <Text className="font-bold text-[10px] text-white">{itemCount}</Text>
                 </View>
               ) : null}
             </View>

@@ -62,11 +62,7 @@ function ProductCardComponent({ product, width, fullWidth }: ProductCardProps) {
 
   return (
     <Animated.View
-      style={[
-        fullWidth ? undefined : { width: width ?? '48%' },
-        cardStyle,
-        shadowCard,
-      ]}
+      style={[fullWidth ? undefined : { width: width ?? '48%' }, cardStyle, shadowCard]}
       className={fullWidth ? 'w-full' : 'mb-3'}
     >
       <Pressable
@@ -100,26 +96,26 @@ function ProductCardComponent({ product, width, fullWidth }: ProductCardProps) {
           </Pressable>
           {discount > 0 ? (
             <View className="absolute left-2 top-2 rounded-full bg-accent px-2.5 py-1">
-              <Text className="text-xs font-bold text-white">-{discount}%</Text>
+              <Text className="font-bold text-xs text-white">-{discount}%</Text>
             </View>
           ) : null}
           {!product.inStock ? (
             <View className="absolute inset-x-0 bottom-0 bg-black/55 py-1.5">
-              <Text className="text-center text-xs font-semibold text-white">
+              <Text className="text-center font-semibold text-xs text-white">
                 {t('common.outOfStock')}
               </Text>
             </View>
           ) : null}
         </View>
         <View className="px-3 pb-3.5 pt-2.5">
-          <Text className="text-sm font-medium leading-5 text-ink" numberOfLines={2}>
+          <Text className="font-medium text-sm leading-5 text-ink" numberOfLines={2}>
             {title}
           </Text>
           <View className="mt-1.5">
             <RatingStars rating={product.rating} size={12} />
           </View>
           <View className="mt-2 flex-row items-center gap-2">
-            <Text className="text-base font-bold text-ink">
+            <Text className="font-bold text-base text-ink">
               ${product.price.toFixed(2)}
             </Text>
             {product.originalPrice ? (

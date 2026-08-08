@@ -170,7 +170,9 @@ export default function ProductDetailScreen() {
                   <AppImage
                     source={{ uri: img }}
                     className={`h-16 w-16 rounded-xl bg-surface-alt ${
-                      i === imageIndex ? 'border-2 border-accent' : 'border border-border opacity-75'
+                      i === imageIndex
+                        ? 'border-2 border-accent'
+                        : 'border border-border opacity-75'
                     }`}
                     contentFit="cover"
                   />
@@ -188,7 +190,7 @@ export default function ProductDetailScreen() {
               {discount > 0 ? <Badge label={`-${discount}%`} variant="accent" /> : null}
             </View>
 
-            <Text className="mt-3 text-2xl font-bold leading-8 text-ink">{title}</Text>
+            <Text className="mt-3 font-bold text-2xl leading-8 text-ink">{title}</Text>
 
             <View className="mt-2.5">
               <RatingStars
@@ -199,7 +201,7 @@ export default function ProductDetailScreen() {
             </View>
 
             <View className="mt-4 flex-row items-baseline gap-2.5">
-              <Text className="text-2xl font-bold text-ink">
+              <Text className="font-bold text-2xl text-ink">
                 ${product.price.toFixed(2)}
               </Text>
               {product.originalPrice ? (
@@ -223,7 +225,7 @@ export default function ProductDetailScreen() {
             </View>
 
             <View className="mt-6 border-t border-border pt-5">
-              <Text className="text-lg font-bold text-ink">{t('common.features')}</Text>
+              <Text className="font-bold text-lg text-ink">{t('common.features')}</Text>
               <View className="mt-3 rounded-2xl border border-border bg-surface p-4">
                 {features.map((f, i) => (
                   <View
@@ -231,14 +233,14 @@ export default function ProductDetailScreen() {
                     className={`flex-row items-start ${i > 0 ? 'mt-3 border-t border-border pt-3' : ''}`}
                   >
                     <View className="mr-3 mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
-                    <Text className="flex-1 text-muted leading-5">{f}</Text>
+                    <Text className="flex-1 leading-5 text-muted">{f}</Text>
                   </View>
                 ))}
               </View>
             </View>
 
             <View className="mt-6 border-t border-border pt-5">
-              <Text className="text-lg font-bold text-ink">{t('common.tags')}</Text>
+              <Text className="font-bold text-lg text-ink">{t('common.tags')}</Text>
               <View className="mt-3 flex-row flex-wrap">
                 {product.tags.map((tag) => (
                   <TagChip key={tag} tag={tag} />
@@ -267,7 +269,7 @@ export default function ProductDetailScreen() {
             <View className="mb-3 flex-row items-end justify-between">
               <View>
                 <Text className="text-xs text-muted">{t('common.total')}</Text>
-                <Text className="text-xl font-bold text-ink">
+                <Text className="font-bold text-xl text-ink">
                   ${product.price.toFixed(2)}
                 </Text>
               </View>

@@ -9,9 +9,9 @@ import { fontFamilies } from '@/lib/theme';
 export function applyGlobalDubaiFont(): void {
   const baseStyle: TextStyle = { fontFamily: fontFamilies.regular };
 
-  const inputDefaults = (
-    TextInput as { defaultProps?: { style?: TextStyle | TextStyle[] } }
-  ).defaultProps ?? {};
+  const inputDefaults =
+    (TextInput as { defaultProps?: { style?: TextStyle | TextStyle[] } }).defaultProps ??
+    {};
 
   // Only set once so re-renders / Fast Refresh do not nest style arrays forever.
   const alreadyApplied =

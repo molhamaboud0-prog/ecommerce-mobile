@@ -76,7 +76,7 @@ export function EditProfileModal({ visible, onClose }: EditProfileModalProps) {
           style={shadowCard}
         >
           <View className="mb-4 flex-row items-center justify-between">
-            <Text className="text-xl font-bold text-ink">{t('common.editProfile')}</Text>
+            <Text className="font-bold text-xl text-ink">{t('common.editProfile')}</Text>
             <Pressable
               onPress={onClose}
               className="h-10 w-10 items-center justify-center rounded-full bg-surface active:opacity-70"

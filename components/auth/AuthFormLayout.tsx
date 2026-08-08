@@ -20,7 +20,10 @@ export function AuthFormLayout({ children }: AuthFormLayoutProps) {
   const c = useThemeColors();
 
   return (
-    <SafeAreaView className="flex-1 bg-background" edges={['top', 'bottom', 'left', 'right']}>
+    <SafeAreaView
+      className="flex-1 bg-background"
+      edges={['top', 'bottom', 'left', 'right']}
+    >
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}

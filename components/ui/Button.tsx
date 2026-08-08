@@ -73,7 +73,7 @@ export function Button({
             style={{ marginRight: 8 }}
           />
         ) : null}
-        <Text className={`text-base font-semibold ${textStyles[variant]}`}>{title}</Text>
+        <Text className={`font-semibold text-base ${textStyles[variant]}`}>{title}</Text>
       </Pressable>
     </Animated.View>
   );

@@ -27,7 +27,7 @@ function ContactButton({
       <View className="h-11 w-11 items-center justify-center rounded-full bg-surface-alt">
         {icon}
       </View>
-      <Text className="ml-3 text-base font-medium text-ink">{label}</Text>
+      <Text className="ml-3 font-medium text-base text-ink">{label}</Text>
     </Pressable>
   );
 }
@@ -53,7 +53,7 @@ export default function ContactScreen() {
           onPress={() => void Linking.openURL(contactInfo.whatsapp)}
         />
 
-        <Text className="mb-3 mt-4 text-lg font-bold text-ink">
+        <Text className="mb-3 mt-4 font-bold text-lg text-ink">
           {t('common.followUs')}
         </Text>
 

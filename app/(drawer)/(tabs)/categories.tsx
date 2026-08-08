@@ -35,7 +35,7 @@ function CategorySection({ categoryId }: { categoryId: string }) {
           contentFit="cover"
         />
         <View className="ml-3 flex-1">
-          <Text className="text-lg font-bold text-ink">{name}</Text>
+          <Text className="font-bold text-lg text-ink">{name}</Text>
           <Text className="text-sm text-accent">{t('common.viewAll')}</Text>
         </View>
         <ChevronRight size={20} color={c.muted} />

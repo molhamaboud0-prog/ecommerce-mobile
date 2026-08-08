@@ -30,7 +30,9 @@ function SearchBar() {
       accessibilityLabel={t('common.searchPlaceholder')}
     >
       <Search size={20} color={c.muted} />
-      <Text className="ml-3 flex-1 text-base text-muted">{t('common.searchPlaceholder')}</Text>
+      <Text className="ml-3 flex-1 text-base text-muted">
+        {t('common.searchPlaceholder')}
+      </Text>
     </Pressable>
   );
 }
@@ -58,7 +60,7 @@ function CategoryTile({ categoryId }: { categoryId: string }) {
           style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 52 }}
         />
         <Text
-          className="absolute bottom-2 left-2 right-2 text-sm font-semibold text-white"
+          className="absolute bottom-2 left-2 right-2 font-semibold text-sm text-white"
           numberOfLines={1}
         >
           {name}
@@ -92,7 +94,7 @@ function HeroBanner() {
           }}
         />
         <View className="justify-end p-6 pt-16">
-          <Text className="text-2xl font-bold leading-8 text-white">
+          <Text className="font-bold text-2xl leading-8 text-white">
             {t('common.heroTitle')}
           </Text>
           <Text className="mt-2 text-sm leading-5 text-white/85">

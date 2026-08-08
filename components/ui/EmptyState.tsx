@@ -26,7 +26,7 @@ export function EmptyState({
           {icon}
         </View>
       ) : null}
-      <Text className="text-center text-xl font-semibold text-ink">{title}</Text>
+      <Text className="text-center font-semibold text-xl text-ink">{title}</Text>
       {description ? (
         <Text className="mt-2 text-center text-muted">{description}</Text>
       ) : null}
