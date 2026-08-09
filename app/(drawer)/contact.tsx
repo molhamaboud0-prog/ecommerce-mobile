@@ -39,8 +39,8 @@ export default function ContactScreen() {
   return (
     <SafeAreaView className="flex-1 bg-background" edges={['bottom']}>
       <RefreshableScrollView
-        className="px-4 py-4"
-        contentContainerStyle={{ flexGrow: 1 }}
+        className="px-4"
+        contentContainerStyle={{ flexGrow: 1, paddingTop: 20, paddingBottom: 32 }}
       >
         <ContactButton
           icon={<Phone size={22} color={c.accent} />}

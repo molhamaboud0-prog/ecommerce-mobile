@@ -54,8 +54,8 @@ export function ProductGrid({
       onEndReachedThreshold={listConfig.onEndReachedThreshold}
       contentContainerStyle={{
         paddingHorizontal: spacing.md - GRID_GAP / 2,
-        paddingTop: GRID_GAP,
-        paddingBottom: GRID_GAP,
+        paddingTop: spacing.md,
+        paddingBottom: spacing.md,
         ...(ListEmptyComponent ? { flexGrow: 1 } : {}),
       }}
       refreshControl={

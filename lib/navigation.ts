@@ -11,7 +11,12 @@ export function useNavigationOptions() {
     headerShown: true,
     headerStyle: { backgroundColor: c.surface },
     headerTintColor: c.ink,
-    headerTitleStyle: { color: c.ink, fontFamily: fontFamilies.semibold },
+    headerTitleStyle: {
+      color: c.ink,
+      fontFamily: fontFamilies.semibold,
+      fontSize: 17,
+    },
+    headerTitleAlign: 'center',
     headerShadowVisible: false,
     headerBackVisible: true,
     headerBackTitle: '',
@@ -30,6 +35,7 @@ export function useNavigationOptions() {
   const titledScreenOptions = (title: string): NativeStackNavigationOptions => ({
     ...stackScreenOptions,
     title,
+    headerTitle: title,
   });
 
   return { stackScreenOptions, drawerHeaderOptions, titledScreenOptions };

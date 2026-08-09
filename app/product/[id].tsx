@@ -1,8 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useLayoutEffect, useMemo, useState } from 'react';
 import { ScrollView, View, Pressable } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Heart } from 'lucide-react-native';
-import { useLocalSearchParams, Stack, router } from 'expo-router';
+import { useLocalSearchParams, Stack, router, useNavigation } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Text } from '@/components/ui/AppText';
@@ -47,13 +47,30 @@ const EMPTY_PRODUCT = {
   inStock: false,
 };
 
+function paramValue(value: string | string[] | undefined): string {
+  if (Array.isArray(value)) return value[0] ?? '';
+  return value ?? '';
+}
+
 export default function ProductDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
-  const { t } = useAppTranslation();
+  const params = useLocalSearchParams<{
+    id: string;
+    title?: string;
+    titleEn?: string;
+    titleAr?: string;
+  }>();
+  const { t, isRTL } = useAppTranslation();
   const c = useThemeColors();
+  const navigation = useNavigation();
   const { titledScreenOptions } = useNavigationOptions();
-  const product = getProductById(id ?? '');
+  const product = getProductById(paramValue(params.id));
   const { title, description, features } = useLocalizedProduct(product ?? EMPTY_PRODUCT);
+  const headerTitle =
+    title ||
+    (isRTL
+      ? paramValue(params.titleAr) || paramValue(params.title)
+      : paramValue(params.titleEn) || paramValue(params.title)) ||
+    '';
   const category = product ? getCategoryById(product.categoryId) : undefined;
   const { name: categoryName } = useLocalizedCategory(
     category ?? { id: '', name: '', nameAr: '', slug: '', image: '' },
@@ -74,11 +91,29 @@ export default function ProductDetailScreen() {
       .slice(0, 8);
   }, [product]);
 
+  useLayoutEffect(() => {
+    const nextTitle = product
+      ? headerTitle
+      : t('common.productNotFound');
+    navigation.setOptions({
+      title: nextTitle,
+      headerTitle: nextTitle,
+    });
+  }, [navigation, product, headerTitle, t]);
+
   if (!product) {
     return (
-      <View className="flex-1 items-center justify-center bg-background">
-        <Text className="text-muted">{t('common.productNotFound')}</Text>
-      </View>
+      <>
+        <Stack.Screen
+          options={{
+            ...titledScreenOptions(t('common.productNotFound')),
+            headerTitle: t('common.productNotFound'),
+          }}
+        />
+        <View className="flex-1 items-center justify-center bg-background px-6">
+          <Text className="text-center text-muted">{t('common.productNotFound')}</Text>
+        </View>
+      </>
     );
   }
 
@@ -115,7 +150,9 @@ export default function ProductDetailScreen() {
     <>
       <Stack.Screen
         options={{
-          ...titledScreenOptions(title),
+          ...titledScreenOptions(headerTitle),
+          title: headerTitle,
+          headerTitle,
           headerRight: () => (
             <Pressable
               onPress={handleToggleWishlist}

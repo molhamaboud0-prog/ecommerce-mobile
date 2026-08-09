@@ -7,8 +7,8 @@ export default function AboutScreen() {
   return (
     <SafeAreaView className="flex-1 bg-background" edges={['bottom']}>
       <RefreshableScrollView
-        className="px-4 py-4"
-        contentContainerStyle={{ paddingBottom: 32 }}
+        className="px-4"
+        contentContainerStyle={{ paddingTop: 20, paddingBottom: 32 }}
         showsVerticalScrollIndicator={false}
       >
         <AboutPageContent />

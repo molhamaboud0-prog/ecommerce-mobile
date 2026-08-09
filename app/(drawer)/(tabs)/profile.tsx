@@ -105,7 +105,7 @@ export default function ProfileScreen() {
   return (
     <View className="flex-1 bg-background">
       <ScreenHeader title={t('common.profile')} />
-      <RefreshableScrollView contentContainerStyle={{ paddingBottom: 32 }}>
+      <RefreshableScrollView contentContainerStyle={{ paddingTop: 16, paddingBottom: 32 }}>
         <View
           className="mx-4 mb-4 items-center rounded-3xl bg-surface p-6"
           style={shadowCard}

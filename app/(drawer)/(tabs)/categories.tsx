@@ -51,7 +51,10 @@ export default function CategoriesScreen() {
   return (
     <View className="flex-1 bg-background">
       <ScreenHeader title={t('common.categories')} />
-      <RefreshableScrollView showsVerticalScrollIndicator={false}>
+      <RefreshableScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingTop: 16 }}
+      >
         {categories.map((cat) => (
           <CategorySection key={cat.id} categoryId={cat.id} />
         ))}

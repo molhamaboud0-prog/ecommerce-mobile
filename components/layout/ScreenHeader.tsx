@@ -18,7 +18,7 @@ export function ScreenHeader({ title, showMenu = true }: ScreenHeaderProps) {
 
   return (
     <SafeAreaView edges={['top']} className="border-b border-border bg-surface">
-      <View className="flex-row items-center px-4 py-3">
+      <View className="flex-row items-center px-4 pb-4 pt-3">
         {showMenu ? (
           <Pressable
             onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
@@ -29,7 +29,9 @@ export function ScreenHeader({ title, showMenu = true }: ScreenHeaderProps) {
             <Menu size={22} color={c.ink} />
           </Pressable>
         ) : null}
-        <Text className="font-bold text-xl text-ink">{title}</Text>
+        <Text className="flex-1 font-bold text-xl leading-7 text-ink" numberOfLines={1}>
+          {title}
+        </Text>
       </View>
     </SafeAreaView>
   );

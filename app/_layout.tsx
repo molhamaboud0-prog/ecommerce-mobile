@@ -60,6 +60,9 @@ export default function RootLayout() {
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(drawer)" options={{ headerShown: false, title: '' }} />
+          <Stack.Screen name="product" options={{ headerShown: false, title: '' }} />
+          <Stack.Screen name="category/[id]" options={{ title: '' }} />
+          <Stack.Screen name="tag/[tag]" options={{ title: '' }} />
         </Stack>
         <ToastHost />
       </SafeAreaProvider>

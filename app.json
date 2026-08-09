@@ -21,7 +21,7 @@
         "barStyle": "dark-content",
         "backgroundColor": "#F5F7FA"
       },
-      "versionCode": 5
+      "versionCode": 6
     },
     "web": {
       "bundler": "metro",

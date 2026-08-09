@@ -13,7 +13,7 @@ export function CartSummary({ subtotal, itemCount }: CartSummaryProps) {
   const { t } = useAppTranslation();
 
   return (
-    <View className="rounded-2xl bg-surface p-4" style={shadowCard}>
+    <View className="mt-2 rounded-2xl bg-surface p-4" style={shadowCard}>
       <View className="flex-row justify-between">
         <Text className="text-muted">{t('common.subtotal')}</Text>
         <Text className="font-medium text-ink">${subtotal.toFixed(2)}</Text>

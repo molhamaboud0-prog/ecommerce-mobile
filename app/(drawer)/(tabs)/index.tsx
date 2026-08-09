@@ -123,7 +123,7 @@ export default function HomeScreen() {
     <View className="flex-1 bg-background">
       <ScreenHeader title={t('common.home')} />
       <RefreshableScrollView showsVerticalScrollIndicator={false}>
-        <View className="h-4" />
+        <View className="h-5" />
         <SearchBar />
         <HeroBanner />
 
