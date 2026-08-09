@@ -48,8 +48,11 @@ function ProductCardComponent({ product, width, fullWidth }: ProductCardProps) {
       : 0;
 
   const handlePress = useCallback(() => {
-    router.push(`/product/${product.id}`);
-  }, [product.id]);
+    router.push({
+      pathname: '/product/[id]',
+      params: { id: product.id, title },
+    });
+  }, [product.id, title]);
 
   const handleToggleWishlist = useCallback(() => {
     void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);

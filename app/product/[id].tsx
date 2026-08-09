@@ -48,12 +48,13 @@ const EMPTY_PRODUCT = {
 };
 
 export default function ProductDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, title: titleParam } = useLocalSearchParams<{ id: string; title?: string }>();
   const { t } = useAppTranslation();
   const c = useThemeColors();
   const { titledScreenOptions } = useNavigationOptions();
   const product = getProductById(id ?? '');
   const { title, description, features } = useLocalizedProduct(product ?? EMPTY_PRODUCT);
+  const headerTitle = title || (typeof titleParam === 'string' ? titleParam : '') || '';
   const category = product ? getCategoryById(product.categoryId) : undefined;
   const { name: categoryName } = useLocalizedCategory(
     category ?? { id: '', name: '', nameAr: '', slug: '', image: '' },
@@ -76,9 +77,12 @@ export default function ProductDetailScreen() {
 
   if (!product) {
     return (
-      <View className="flex-1 items-center justify-center bg-background">
-        <Text className="text-muted">{t('common.productNotFound')}</Text>
-      </View>
+      <>
+        <Stack.Screen options={titledScreenOptions(t('common.productNotFound'))} />
+        <View className="flex-1 items-center justify-center bg-background px-6">
+          <Text className="text-center text-muted">{t('common.productNotFound')}</Text>
+        </View>
+      </>
     );
   }
 
@@ -115,7 +119,7 @@ export default function ProductDetailScreen() {
     <>
       <Stack.Screen
         options={{
-          ...titledScreenOptions(title),
+          ...titledScreenOptions(headerTitle),
           headerRight: () => (
             <Pressable
               onPress={handleToggleWishlist}

@@ -1,3 +1,4 @@
+/** Direct Unsplash CDN URLs — distinct, food-accurate photos for the grocery demo. */
 const unsplash = (id: string, w = 800, h = 800) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
@@ -5,14 +6,15 @@ const unsplash = (id: string, w = 800, h = 800) =>
 export const categoryImages: Record<string, string> = {
   'cat-fruits': unsplash('photo-1619566636858-adf3ef46400b'),
   'cat-vegetables': unsplash('photo-1540420773420-3366772f4999'),
-  'cat-dairy': unsplash('photo-1550583724-b2692b85b150'),
+  'cat-dairy': unsplash('photo-1628088062854-d1870b4553da'),
   'cat-bakery': unsplash('photo-1509440159596-0249088772ff'),
-  'cat-drinks': unsplash('photo-1544145945-f90425340c7e'),
+  'cat-drinks': unsplash('photo-1622597467836-f3285f2131b8'),
   'cat-meat': unsplash('photo-1607623814075-e51df1bdc82f'),
 };
 
 /**
  * Food product photos. Keys match catalog `visualKey` in products.ts.
+ * Each pair is two real photos of that specific item (verified HTTP 200).
  */
 export const productVisuals: Record<string, [string, string]> = {
   apples: [
@@ -21,11 +23,11 @@ export const productVisuals: Record<string, [string, string]> = {
   ],
   bananas: [
     unsplash('photo-1571771894821-ce9b6c11b08e'),
-    unsplash('photo-1553279768-865429fa0078'),
+    unsplash('photo-1603833665858-e61d17a86224'),
   ],
   oranges: [
     unsplash('photo-1547514701-42782101795e'),
-    unsplash('photo-1600271886742-f049cd451bba'),
+    unsplash('photo-1582979512210-99b6a53386f9'),
   ],
   strawberries: [
     unsplash('photo-1464965911861-746a04b4bca6'),
@@ -33,31 +35,31 @@ export const productVisuals: Record<string, [string, string]> = {
   ],
   grapes: [
     unsplash('photo-1596363505729-4190a9506133'),
-    unsplash('photo-1619566636858-adf3ef46400b'),
+    unsplash('photo-1537640538966-79f369143f8f'),
   ],
   mango: [
-    unsplash('photo-1553279768-865429fa0078'),
-    unsplash('photo-1547514701-42782101795e'),
+    unsplash('photo-1601493700631-2b16ec4b4716'),
+    unsplash('photo-1519096845289-95806ee03a1a'),
   ],
   tomatoes: [
     unsplash('photo-1592924357228-91a4daadcfea'),
-    unsplash('photo-1563565375-f3fdfdbefa83'),
+    unsplash('photo-1561136594-7f68413baa99'),
   ],
   cucumbers: [
     unsplash('photo-1449300079323-02e209d9d3a6'),
-    unsplash('photo-1540420773420-3366772f4999'),
+    unsplash('photo-1568584711271-6c929fb49b60'),
   ],
   carrots: [
     unsplash('photo-1598170845058-32b9d6a5da37'),
-    unsplash('photo-1518977676601-b53f82aba655'),
+    unsplash('photo-1445282768818-728615cc910a'),
   ],
   lettuce: [
     unsplash('photo-1622206151226-18ca2c9ab4a1'),
-    unsplash('photo-1540420773420-3366772f4999'),
+    unsplash('photo-1556801712-76c8eb07bbc9'),
   ],
   peppers: [
     unsplash('photo-1563565375-f3fdfdbefa83'),
-    unsplash('photo-1526470498-9ae73c665de8'),
+    unsplash('photo-1518977822534-7049a61ee0c2'),
   ],
   potatoes: [
     unsplash('photo-1518977676601-b53f82aba655'),
@@ -73,15 +75,15 @@ export const productVisuals: Record<string, [string, string]> = {
   ],
   yogurt: [
     unsplash('photo-1488477181946-6428a0291777'),
-    unsplash('photo-1550583724-b2692b85b150'),
+    unsplash('photo-1571212515416-fef01fc43637'),
   ],
   eggs: [
     unsplash('photo-1582722872445-44dc5f7e3c8f'),
-    unsplash('photo-1452195100486-9cc805987862'),
+    unsplash('photo-1587486913049-53fc88980cfc'),
   ],
   butter: [
     unsplash('photo-1589985270826-4b7bb135bc9d'),
-    unsplash('photo-1486297678162-eb2a19b0a32d'),
+    unsplash('photo-1628088062854-d1870b4553da'),
   ],
   bread: [
     unsplash('photo-1509440159596-0249088772ff'),
@@ -93,7 +95,7 @@ export const productVisuals: Record<string, [string, string]> = {
   ],
   cake: [
     unsplash('photo-1578985545062-69928b1d9587'),
-    unsplash('photo-1558961363-fa8fdf82db35'),
+    unsplash('photo-1464349095431-e9a21285b5f3'),
   ],
   cookies: [
     unsplash('photo-1499636136210-6f4ee915583e'),
@@ -101,7 +103,7 @@ export const productVisuals: Record<string, [string, string]> = {
   ],
   baguette: [
     unsplash('photo-1549931319-a545dcf3bc73'),
-    unsplash('photo-1509440159596-0249088772ff'),
+    unsplash('photo-1608198093002-ad4e005484ec'),
   ],
   juice: [
     unsplash('photo-1622597467836-f3285f2131b8'),
@@ -112,16 +114,16 @@ export const productVisuals: Record<string, [string, string]> = {
     unsplash('photo-1514432324607-a09d9b4aefdd'),
   ],
   tea: [
-    unsplash('photo-1514432324607-a09d9b4aefdd'),
-    unsplash('photo-1495474472287-4d71bcdd2085'),
+    unsplash('photo-1571934811356-5cc061b6821f'),
+    unsplash('photo-1564890369478-c89ca6d9cde9'),
   ],
   water: [
     unsplash('photo-1548839140-29a749e1cf4d'),
     unsplash('photo-1523362628745-0c100150b504'),
   ],
   soda: [
-    unsplash('photo-1544145945-f90425340c7e'),
-    unsplash('photo-1600271886742-f049cd451bba'),
+    unsplash('photo-1622483767028-3f66f32aef97'),
+    unsplash('photo-1581006852262-e4307cf6283a'),
   ],
   chicken: [
     unsplash('photo-1587593810167-a84920ea0781'),

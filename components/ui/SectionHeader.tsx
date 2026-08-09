@@ -20,11 +20,11 @@ export function SectionHeader({
   const c = useThemeColors();
 
   return (
-    <View className="mb-4 flex-row items-end justify-between px-4">
+    <View className="mb-4 mt-1 flex-row items-end justify-between px-4">
       <View className="mr-3 flex-1">
-        <Text className="font-bold text-xl text-ink">{title}</Text>
+        <Text className="font-bold text-xl leading-7 text-ink">{title}</Text>
         {subtitle ? (
-          <Text className="mt-0.5 text-sm text-muted" numberOfLines={1}>
+          <Text className="mt-1 text-sm leading-5 text-muted" numberOfLines={2}>
             {subtitle}
           </Text>
         ) : null}

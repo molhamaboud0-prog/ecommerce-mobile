@@ -13,7 +13,7 @@ export function HorizontalProductList({ products }: HorizontalProductListProps) 
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 8, gap: 12 }}
+      contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 4, paddingBottom: 12, gap: 12 }}
     >
       {products.map((product) => (
         <ProductCard key={product.id} product={product} width={160} />

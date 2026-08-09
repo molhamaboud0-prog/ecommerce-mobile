@@ -34,7 +34,7 @@ export default function SearchScreen() {
       <>
         <Stack.Screen options={titledScreenOptions(t('common.search'))} />
         <View className="flex-1 bg-background">
-          <View className="border-b border-border bg-surface px-4 pb-1 pt-2">
+          <View className="border-b border-border bg-surface px-4 pb-3 pt-4">
             <Input
               value={query}
               onChangeText={setQuery}

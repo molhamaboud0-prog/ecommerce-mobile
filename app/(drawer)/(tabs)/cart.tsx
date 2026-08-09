@@ -96,7 +96,7 @@ export default function CartScreen() {
     return (
       <View className="flex-1 bg-background">
         <ScreenHeader title={t('common.cart')} />
-        <RefreshableScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <RefreshableScrollView contentContainerStyle={{ flexGrow: 1, paddingTop: 16 }}>
           <EmptyState
             title={t('common.emptyCart')}
             description={t('common.emptyCartDescription')}
@@ -118,7 +118,7 @@ export default function CartScreen() {
       <ScreenHeader title={t('common.cart')} />
       <RefreshableScrollView
         className="flex-1 px-4"
-        contentContainerStyle={{ paddingBottom: 24 }}
+        contentContainerStyle={{ paddingTop: 16, paddingBottom: 24 }}
       >
         {items.map((item) => {
           const product = getProductById(item.productId);
