@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Image, type ImageProps } from 'expo-image';
 import { cssInterop } from 'nativewind';
 
@@ -29,12 +29,15 @@ export function AppImage({
       : undefined;
 
   return (
-    <View className={className} style={[{ backgroundColor: fallbackColor, overflow: 'hidden' }, style]}>
+    <View
+      className={className}
+      style={[{ backgroundColor: fallbackColor, overflow: 'hidden' }, style]}
+    >
       {!failed ? (
         <Image
           {...rest}
           source={source}
-          style={{ width: '100%', height: '100%' }}
+          style={StyleSheet.absoluteFillObject}
           cachePolicy="memory-disk"
           transition={200}
           placeholder={PLACEHOLDER}

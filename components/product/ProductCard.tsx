@@ -50,9 +50,15 @@ function ProductCardComponent({ product, width, fullWidth }: ProductCardProps) {
   const handlePress = useCallback(() => {
     router.push({
       pathname: '/product/[id]',
-      params: { id: product.id, title },
+      params: {
+        id: product.id,
+        title,
+        // Keep both languages available for the header immediately on open.
+        titleEn: product.title,
+        titleAr: product.titleAr,
+      },
     });
-  }, [product.id, title]);
+  }, [product.id, product.title, product.titleAr, title]);
 
   const handleToggleWishlist = useCallback(() => {
     void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);

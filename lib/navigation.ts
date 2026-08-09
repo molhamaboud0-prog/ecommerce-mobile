@@ -35,6 +35,7 @@ export function useNavigationOptions() {
   const titledScreenOptions = (title: string): NativeStackNavigationOptions => ({
     ...stackScreenOptions,
     title,
+    headerTitle: title,
   });
 
   return { stackScreenOptions, drawerHeaderOptions, titledScreenOptions };

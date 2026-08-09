@@ -22,23 +22,23 @@ export function CartItemRow({ item, product }: CartItemRowProps) {
   const removeItem = useCartStore((s) => s.removeItem);
 
   return (
-    <View className="mb-3 flex-row rounded-2xl bg-surface p-3" style={shadowCard}>
+    <View className="mb-5 flex-row rounded-2xl bg-surface p-4" style={shadowCard}>
       <AppImage
         source={{ uri: product.images[0] }}
         className="h-24 w-24 rounded-xl"
         contentFit="cover"
       />
-      <View className="ml-3 flex-1">
+      <View className="ml-3 flex-1 justify-between">
         <Text className="font-medium text-ink" numberOfLines={2}>
           {title}
         </Text>
-        <Text className="mt-0.5 text-xs text-muted">
+        <Text className="mt-1 text-xs text-muted">
           {t('common.unitPrice', { price: `$${product.price.toFixed(2)}` })}
         </Text>
-        <Text className="mt-1 font-bold text-accent">
+        <Text className="mt-1.5 font-bold text-accent">
           ${(product.price * item.quantity).toFixed(2)}
         </Text>
-        <View className="mt-2 flex-row items-center justify-between">
+        <View className="mt-3 flex-row items-center justify-between">
           <View className="flex-row items-center rounded-lg bg-surface-alt">
             <Pressable
               onPress={() => updateQuantity(item.productId, item.quantity - 1)}
