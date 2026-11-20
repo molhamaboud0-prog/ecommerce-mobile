@@ -33,12 +33,10 @@ export default function DeckExport() {
 
       {projects.map((p) => (
         <Slide key={p.slug} className="deck-case" style={{ '--accent': p.accent }}>
-          <header className="deck-case-head">
-            <div>
-              <p className="deck-tag">{t(p.kind)}</p>
-              <h2>{t(p.title)}</h2>
-              <p className="deck-lead">{t(p.summary)}</p>
-            </div>
+          <div className="deck-case-copy">
+            <p className="deck-tag">{t(p.kind)}</p>
+            <h2>{t(p.title)}</h2>
+            <p className="deck-lead">{t(p.summary)}</p>
             <dl className="deck-meta-row">
               {p.meta.map((m) => (
                 <div key={t(m.label)}>
@@ -47,20 +45,20 @@ export default function DeckExport() {
                 </div>
               ))}
             </dl>
-          </header>
+            {p.metrics?.length > 0 && (
+              <div className="deck-metrics deck-metrics-inline">
+                {p.metrics.slice(0, 4).map((m) => (
+                  <div key={t(m.label)}>
+                    <strong>{m.value}</strong>
+                    <span>{t(m.label)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="deck-shots">
             <Cover project={p} compact />
           </div>
-          {p.metrics?.length > 0 && (
-            <div className="deck-metrics">
-              {p.metrics.slice(0, 4).map((m) => (
-                <div key={t(m.label)}>
-                  <strong>{m.value}</strong>
-                  <span>{t(m.label)}</span>
-                </div>
-              ))}
-            </div>
-          )}
         </Slide>
       ))}
 
