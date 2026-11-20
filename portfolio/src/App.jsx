@@ -5,11 +5,13 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import CaseStudy from './pages/CaseStudy.jsx';
+import DeckExport from './pages/DeckExport.jsx';
 
 function parseHash() {
   const h = window.location.hash.replace(/^#/, '') || '/';
   const m = h.match(/^\/work\/([\w-]+)/);
   if (m) return { page: 'case', slug: m[1] };
+  if (h === '/deck' || h.startsWith('/deck')) return { page: 'deck', anchor: 'deck' };
   return { page: 'home', anchor: h.startsWith('/') ? h.slice(1) : h };
 }
 
@@ -37,11 +39,17 @@ export default function App() {
 
   return (
     <PrefsProvider>
-      <Header />
-      <main key={route.slug || 'home'} className="page-enter">
-        {project ? <CaseStudy project={project} /> : <Home />}
+      {route.page !== 'deck' && <Header />}
+      <main key={route.slug || route.page} className={route.page === 'deck' ? 'deck-main' : 'page-enter'}>
+        {route.page === 'deck' ? (
+          <DeckExport />
+        ) : project ? (
+          <CaseStudy project={project} />
+        ) : (
+          <Home />
+        )}
       </main>
-      <Footer />
+      {route.page !== 'deck' && <Footer />}
     </PrefsProvider>
   );
 }
